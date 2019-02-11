@@ -1,0 +1,17 @@
+[user]
+	name = Artsiom Balakir
+	email = abalak8@illinois.edu
+[core]
+	autocrlf = input
+	editor = "code --wait"
+[color]
+	ui = auto
+[alias]
+	go = checkout
+	# pretty-log: nice formatted, dence log
+	plog = log --pretty=format:'%C(yellow)%h%Cgreen %cr %C(cyan)%an %C(bold white)%s%C(red)%d %Creset'
+	compare = diff @^
+	# 'git github repo-nate' will clone from id below
+	github = "!f() { git clone http://github.com/abalaki6/\"$1\"; }; f"
+[credential]
+	helper = store
