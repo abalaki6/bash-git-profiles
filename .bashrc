@@ -185,3 +185,4 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 export GREETING="\033[1;36mThat's okay, you have seen weirder crap.\nRight now is \033[1;31m$(date)"
 echo -e $GREETING
 alias clear='clear; echo -e "$GREETING"'
+alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
