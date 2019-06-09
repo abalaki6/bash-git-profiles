@@ -186,3 +186,4 @@ export GREETING="\033[1;36mThat's okay, you have seen weirder crap.\nRight now i
 echo -e $GREETING
 alias clear='clear; echo -e "$GREETING"'
 alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
+shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
