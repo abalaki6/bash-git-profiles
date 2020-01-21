@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=20000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -187,3 +187,7 @@ echo -e $GREETING
 alias clear='clear; echo -e "$GREETING"'
 alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
+
+# night/daylight redshift aliases
+alias night="redshift -O 2700 >/dev/null 2>&1"
+alias day="redshift -O 6000 >/dev/null 2>&1"

@@ -12,6 +12,6 @@
 	plog = log --pretty=format:'%C(yellow)%h%Cgreen %cr %C(cyan)%an %C(bold white)%s%C(red)%d %Creset'
 	compare = diff @^
 	# 'git github repo-nate' will clone from id below
-	github = "!f() { git clone http://github.com/artsiom-svm/\"$1\"; }; f"
+	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"
 [credential]
 	helper = store
