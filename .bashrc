@@ -182,7 +182,8 @@ ec2-folder()
 
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
-export GREETING="\033[1;36mThat's okay, you have seen weirder crap.\nRight now is \033[1;31m$(date)"
+export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
+"
 echo -e $GREETING
 alias clear='clear; echo -e "$GREETING"'
 alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
@@ -191,3 +192,6 @@ shopt -s autocd #Allows you to cd into directory merely by typing the directory 
 # night/daylight redshift aliases
 alias night="redshift -O 2700 >/dev/null 2>&1"
 alias day="redshift -O 6000 >/dev/null 2>&1"
+
+# add default transparancy in st
+transset -a 0.80 > /dev/null 2>&1
