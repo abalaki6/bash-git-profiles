@@ -116,18 +116,18 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=/usr/local/mpi/bin:/usr/include/python3.6m/:/usr/local/cuda-10.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/mpi/lib:/usr/local/cuda-10.0/lib64:$LD_LIBRARY_PATH
+export PATH=/usr/local/mpi/bin:/usr/include/python3.6m/:/usr/local/cuda-10.1/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/mpi/lib:/usr/local/cuda-10.1/lib64:$LD_LIBRARY_PATH
 export TF_CPP_MIN_LOG_LEVEL=2
 
 alias xdg-open="xdg-open 2> /dev/null 1> /dev/null"
 alias ipython=ipython3
 alias jnb='jupyter notebook --no-browser'
-# since i am too dumb to remember
-alias xgd-open=xdg-open
-# alias pip=/home/artsiom/.local/bin/pip3
+alias pip=/home/artsiom/.local/bin/pip3
 alias docker='sudo docker'
 alias docker-cur='sudo docker ps -a -q'
+alias clear='clear; echo -e "$GREETING"'
+alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
 # bc i am a cheater
 alias sudo='sudo '
 # typos
@@ -137,6 +137,10 @@ alias 'code.'='code .'
 alias sudp=sudo
 alias sudu=sudo
 alias gut=git
+
+# night/daylight redshift aliases
+alias night="redshift -O 2700 >/dev/null 2>&1"
+alias day="redshift -O 6000 >/dev/null 2>&1"
 
 export EC2IP=""
 export EC2PEMPATH=""
@@ -185,13 +189,7 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
 "
 echo -e $GREETING
-alias clear='clear; echo -e "$GREETING"'
-alias map_csl425="ssh -N -f -L localhost:8888:localhost:8888 abalak8@csl-425-05.csl.illinois.edu"
 shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
-
-# night/daylight redshift aliases
-alias night="redshift -O 2700 >/dev/null 2>&1"
-alias day="redshift -O 6000 >/dev/null 2>&1"
 
 # add default transparancy in st
 transset -a 0.80 > /dev/null 2>&1
