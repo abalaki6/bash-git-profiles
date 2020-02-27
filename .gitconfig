@@ -1,6 +1,6 @@
 [user]
 	name = Artsiom Balakir
-	email = abalak8@illinois.edu
+	email = artsiom.balakir@ring.com
 [core]
 	autocrlf = input
 	editor = "code --wait"
@@ -13,5 +13,6 @@
 	compare = diff @^
 	# 'git github repo-nate' will clone from id below
 	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"
+	amend = commit --amend --no-edit
 [credential]
 	helper = store
