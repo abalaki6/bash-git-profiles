@@ -184,7 +184,7 @@ ec2-folder()
     cd $EC2LAZYMOUNTPATH
 }
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 7)$(tput setab 0)\][\W] \[$(tput setaf 2)\$(__git_ps1 '(%s)')\]\n \[$(tput setaf 6)└─ \\$\] $(tput setaf 7)"
 
 export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
 "
