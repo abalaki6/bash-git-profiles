@@ -139,7 +139,7 @@ alias sudu=sudo
 alias gut=git
 
 # night/daylight redshift aliases
-alias night="redshift -O 2700 >/dev/null 2>&1"
+alias night="redshift -O 2300 >/dev/null 2>&1"
 alias day="redshift -O 6000 >/dev/null 2>&1"
 
 export EC2IP=""
@@ -193,3 +193,6 @@ shopt -s autocd #Allows you to cd into directory merely by typing the directory 
 
 # add default transparancy in st
 transset -a 0.80 > /dev/null 2>&1
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
