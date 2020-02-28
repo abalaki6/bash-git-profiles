@@ -184,7 +184,14 @@ ec2-folder()
     cd $EC2LAZYMOUNTPATH
 }
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 7)$(tput setab 0)\][\W] \[$(tput setaf 2)\$(__git_ps1 '(%s)')\]\n \[$(tput setaf 6)└─ \\$\] $(tput setaf 7)"
+repo_status()
+{
+    if [[ `git status --porcelain` ]]; then
+        echo " $(tput setaf 1)*%"
+    fi
+}
+
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W] \[$(tput setaf 2)\$(__git_ps1 '(%s')\]\[\$(repo_status)\]\[$(tput setaf 2))\]\n \[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
 
 export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
 "
