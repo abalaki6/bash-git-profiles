@@ -186,12 +186,18 @@ ec2-folder()
 
 repo_status()
 {
-    if [[ `git status --porcelain` ]]; then
-        echo " $(tput setaf 1)*%"
+    status=$?
+    if [[ `git status --porcelain 2> /dev/null` ]]; then
+        echo "$(tput setaf 2)$(__git_ps1 ' (%s') $(tput setaf 1)*%$(tput setaf 2)) $(tput setaf 5){${status}}"
+    else
+        echo "$(tput setaf 2)$(__git_ps1 ' (%s)') $(tput setaf 5){${status}}"
     fi
+
 }
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\]\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W] \[$(tput setaf 2)\$(__git_ps1 '(%s')\]\[\$(repo_status)\]\[$(tput setaf 2))\]\n \[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
+export PS1="\[$(tput bold)$(tput setaf 1)~\@~\] \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W]\[\$(repo_status)\]\n\[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
+
+export PS2="\[$(tput bold)$(tput setaf 1)└── \]$(tput sgr0)\$(tput bold)"
 
 export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
 "
