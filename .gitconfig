@@ -1,6 +1,6 @@
 [user]
 	name = Artsiom Balakir
-	email = artsiombalakir@gmail.com
+	email = artsiom.balakir@ring.com
 [core]
 	autocrlf = input
 	editor = "code --wait"
@@ -9,7 +9,7 @@
 [alias]
 	go = checkout
 	# pretty-log: nice formatted, dence log
-	plog = log --pretty=format:'%C(yellow)%h%Cgreen %cr %C(cyan)%an %C(bold white)%s%C(red)%d %Creset'
+	plog = log --pretty=format:'%C(bold green)%h%C(red) %cr %C(yellow)%an %C(magenta)%s%C(red)%d %Creset'
 	compare = diff @^
 	# 'git github repo-nate' will clone from id below
 	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"

@@ -194,6 +194,7 @@ repo_status()
     fi
 
 }
+source ~/.bash_git
 
 export PS1="\[$(tput bold)$(tput setaf 1)~\@~\] \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W]\[\$(repo_status)\]\n\[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
 
