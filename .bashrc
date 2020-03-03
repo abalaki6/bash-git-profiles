@@ -76,8 +76,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -137,73 +137,57 @@ alias 'code.'='code .'
 alias sudp=sudo
 alias sudu=sudo
 alias gut=git
+alias got=git
 
 # night/daylight redshift aliases
 alias night="redshift -O 2300 >/dev/null 2>&1"
 alias day="redshift -O 6000 >/dev/null 2>&1"
 
-export EC2IP=""
-export EC2PEMPATH=""
-export EC2LAZYMOUNTPATH=""
-export EC2USERNAME=""
-
-ec2-mount()
-{
-    local path="${1:-$EC2LAZYMOUNTPATH}"
-    local username="${2:-$EC2USERNAME}"
-    if [ ! -d "$path" ]; then
-        mkdir -p $path
-    fi
-    if ! mount | grep $path > /dev/null; then
-        sshfs $username@$EC2IP:/ $path/ -o IdentityFile=$EC2PEMPATH
-    fi
-}
-
-ec2-umount()
-{
-    local path="${1:-$EC2LAZYMOUNTPATH}"
-    if mount | grep $path > /dev/null; then
-        if sudo umount -f $path > /dev/null; then
-            rm -r $path
-        fi
-    fi
-}
-
-ec2-ssh()
-{
-    local username="${1:-$EC2USERNAME}"
-    local private_rsa="${2:-$EC2PEMPATH}"
-    ssh -i "$private_rsa" $username@$EC2IP
-}
-
-ec2-folder()
-{
-    if ! mount | grep $EC2LAZYMOUNTPATH > /dev/null; then
-        ec2-mount
-    fi
-    cd $EC2LAZYMOUNTPATH
-}
-
 repo_status()
 {
-    status=$?
-    if [[ `git status --porcelain 2> /dev/null` ]]; then
-        echo "$(tput setaf 2)$(__git_ps1 ' (%s') $(tput setaf 1)*%$(tput setaf 2)) $(tput setaf 5){${status}}"
-    else
-        echo "$(tput setaf 2)$(__git_ps1 ' (%s)') $(tput setaf 5){${status}}"
+    ret=$?
+    status="$(tput setaf 5){$ret}"
+    prompt=""
+    if [ -d .git ]; then
+        prompt="$(tput setaf 2)$(__git_ps1 ' (%s')"
+        if [[ `git status --porcelain 2> /dev/null` ]]; then
+            prompt="$prompt $(tput setaf 1)*%$(tput setaf 2))"
+        else
+            prompt="$prompt)"
+        fi
     fi
-
+    echo "$prompt $status"
 }
-source ~/.bash_git
+
+# special fix for garbageOS
+# > dont have __git_ps1 in 2020
+# > dont have autocd
+if [ $(uname) != "Linux" ]; then
+    source ~/.bash_git
+else
+    shopt -s autocd
+fi
 
 export PS1="\[$(tput bold)$(tput setaf 1)~\@~\] \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W]\[\$(repo_status)\]\n\[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
 
 export PS2="\[$(tput bold)$(tput setaf 1)└── \]$(tput sgr0)\$(tput bold)"
 
-export GREETING="\033[1;36mWelcome back, \033[1;31m$USER!\n\033[1;36mRight now is \033[1;31m$(date).
+export GREETING="$(tput sgr0)$(tput setaf 6)Welcome back, $(tput setaf 1)$USER!\n$(tput setaf 6)Right now is $(tput setaf 3)$(date)$(tput sgr0).
 "
 echo -e $GREETING
-shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
+
+bind 'set show-all-if-ambiguous off'
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind 'TAB:menu-complete'
+
+bind 'set editing-mode vim'
+bind 'set vi-ins-mode-string \1\e[6 q\2'
+bind 'set vi-cmd-mode-string \1\e[2 q\2'
+bind '"\e[1;5D": backward-word'
+bind '"\e[1;5C": forward-word'
+
+export EDITOR='code --wait'
 
 # add default transparancy in st
 transset -a 0.80 > /dev/null 2>&1

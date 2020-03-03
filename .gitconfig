@@ -1,16 +1,22 @@
 [user]
 	name = Artsiom Balakir
-	email = artsiom.balakir@ring.com
+	email = artsiombalakir@gmail.com
 [core]
 	autocrlf = input
 	editor = "code --wait"
 [color]
 	ui = auto
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
 [alias]
 	go = checkout
 	# pretty-log: nice formatted, dence log
 	plog = log --pretty=format:'%C(bold cyan)%h%C(red) %cr %C(yellow)%an %C(magenta)%s%C(green)%d %Creset'
-	compare = diff @^
+	compare = difftool @^
+	comparebranch = difftool
+	difftop = diff @^
 	# 'git github repo-nate' will clone from id below
 	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"
 	amend = commit --amend --no-edit
