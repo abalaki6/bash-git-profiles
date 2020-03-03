@@ -9,7 +9,7 @@
 [alias]
 	go = checkout
 	# pretty-log: nice formatted, dence log
-	plog = log --pretty=format:'%C(bold green)%h%C(red) %cr %C(yellow)%an %C(magenta)%s%C(red)%d %Creset'
+	plog = log --pretty=format:'%C(bold cyan)%h%C(red) %cr %C(yellow)%an %C(magenta)%s%C(green)%d %Creset'
 	compare = diff @^
 	# 'git github repo-nate' will clone from id below
 	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"
