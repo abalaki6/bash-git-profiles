@@ -181,11 +181,11 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind 'TAB:menu-complete'
 
-bind 'set editing-mode vim'
-bind 'set vi-ins-mode-string \1\e[6 q\2'
-bind 'set vi-cmd-mode-string \1\e[2 q\2'
-bind '"\e[1;5D": backward-word'
-bind '"\e[1;5C": forward-word'
+# bind 'set editing-mode vim'
+# bind 'set vi-ins-mode-string \1\e[6 q\2'
+# bind 'set vi-cmd-mode-string \1\e[2 q\2'
+# bind '"\e[1;5D": backward-word'
+# bind '"\e[1;5C": forward-word'
 
 export EDITOR='code --wait'
 
