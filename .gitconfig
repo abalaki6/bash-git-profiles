@@ -4,16 +4,18 @@
 [core]
 	autocrlf = input
 	editor = "code --wait"
-[color]
-	ui = auto
 [diff]
 	tool = vscode
 [difftool "vscode"]
 	cmd = code --wait --diff $LOCAL $REMOTE
+[color]
+	ui = auto
 [alias]
 	go = checkout
 	# pretty-log: nice formatted, dence log
 	plog = log --pretty=format:'%C(bold cyan)%h%C(red) %cr %C(yellow)%an %C(magenta)%s%C(green)%d %Creset'
+	# pretty-log with graph
+	glog = plog --graph --all
 	compare = difftool @^
 	comparebranch = difftool
 	difftop = diff @^
