@@ -123,7 +123,6 @@ export TF_CPP_MIN_LOG_LEVEL=2
 alias xdg-open="xdg-open 2> /dev/null 1> /dev/null"
 alias ipython=ipython3
 alias jnb='jupyter notebook --no-browser'
-alias pip=/home/artsiom/.local/bin/pip3
 alias docker='sudo docker'
 alias docker-cur='sudo docker ps -a -q'
 alias clear='clear; echo -e "$GREETING"'
@@ -168,9 +167,9 @@ else
     shopt -s autocd
 fi
 
-export PS1="\[$(tput bold)$(tput setaf 1)~\@~\] \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W]\[\$(repo_status)\]\n\[$(tput setaf 1)└─ \\$\] $(tput sgr0)\$(tput bold)"
+export PS1="\[$(tput bold)$(tput setaf 1)\]~\@~ \[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 6)\]\h \[$(tput sgr0)$(tput bold)\][\W]\$(repo_status)\n\[$(tput setaf 1)\]└─ \\$ \[$(tput sgr0)\$(tput bold)\]"
 
-export PS2="\[$(tput bold)$(tput setaf 1)└── \]$(tput sgr0)\$(tput bold)"
+export PS2="\[$(tput bold)$(tput setaf 1)\]└── $\[(tput sgr0)\$(tput bold)\]"
 
 export GREETING="$(tput sgr0)$(tput setaf 6)Welcome back, $(tput setaf 1)$USER!\n$(tput setaf 6)Right now is $(tput setaf 3)$(date)$(tput sgr0).
 "
