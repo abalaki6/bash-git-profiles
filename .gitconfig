@@ -22,5 +22,6 @@
 	# 'git github repo-nate' will clone from id below
 	github = "!f() { git clone https://github.com/artsiom-svm/\"$1\"; }; f"
 	amend = commit --amend --no-edit
+	sfetch = fetch --progress --prune -v
 [credential]
 	helper = store
