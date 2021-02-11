@@ -139,8 +139,8 @@ alias gut=git
 alias got=git
 
 # night/daylight redshift aliases
-alias night="redshift -O 2300 >/dev/null 2>&1"
-alias day="redshift -O 6000 >/dev/null 2>&1"
+alias night="redshift -P -O 1500 >/dev/null 2>&1"
+alias day="redshift -P -O 6000 >/dev/null 2>&1"
 
 repo_status()
 {
@@ -189,7 +189,11 @@ bind 'TAB:menu-complete'
 export EDITOR='code --wait'
 
 # add default transparancy in st
-transset -a 0.80 > /dev/null 2>&1
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    transset -a 0.95 > /dev/null 2>&1
+else
+    transset -a 0.80 > /dev/null 2>&1
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
